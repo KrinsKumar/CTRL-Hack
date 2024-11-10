@@ -42,19 +42,19 @@ const getTierStyle = (tier: string) => {
 const userURL = "http://localhost:8080/getboard";
 
 export default function UserTierTable() {
-  const [users, setUsers] = useState<User[]>([]);
+  const [users, setUsers] = useState<User[]>(userss);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      fetch(userURL)
-        .then((res) => res.json())
-        .then((data) => {
-          setUsers(data);
-        });
-      console.log(users);
-    }, 1000);
+    // const interval = setInterval(() => {
+    //   fetch(userURL)
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //       setUsers(data);
+    //     });
+    //   console.log(users);
+    // }, 1000);
 
-    return () => clearInterval(interval);
+    // return () => clearInterval(interval);
   }, [users]);
 
   return (
