@@ -40,7 +40,7 @@ const getTierStyle = (tier: string) => {
   }
 };
 
-const userURL = "http://localhost:8080/getboard";
+const userURL = "https://8c5b-199-212-64-119.ngrok-free.app/getboard";
 
 export default function UserTierTable() {
   const [users, setUsers] = useState<User[]>([]);

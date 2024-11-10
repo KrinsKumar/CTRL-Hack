@@ -20,8 +20,6 @@ const VideoCard = (props) => {
   } = props;
   const videoRef = useRef(null);
 
-  useEffect(() => {}, [autoplay]);
-
   const onVideoPress = () => {
     if (videoRef.current.paused) {
       videoRef.current.play();
