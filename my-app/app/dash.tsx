@@ -10,6 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 type User = {
   name: string;
@@ -59,23 +60,41 @@ export default function UserTierTable() {
 
   return (
     <div className="container mx-auto py-10">
-      <Table>
-        <TableCaption>User Tier Information</TableCaption>
-        <TableHeader>
-          <TableRow>
-            <TableHead className="w-[200px]">Name</TableHead>
-            <TableHead className="text-right">Scroll Count</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {users.map((user) => (
-            <TableRow key={user.name} className={getTierStyle(user.tier)}>
-              <TableCell className="font-medium">{user.name}</TableCell>
-              <TableCell className="text-right">{user.scroll}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+      <Card className="w-full max-w-2xl mx-auto">
+        <CardHeader>
+          <CardTitle className="text-2xl font-bold text-center">
+            User Tier Rankings
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Table className="border-2">
+            <TableCaption className="mt-4 text-muted-foreground">
+              Top users are highlighted for each tier based on scroll count.
+            </TableCaption>
+            <TableHeader>
+              <TableRow className="border-t border-b">
+                <TableHead className="w-[200px] font-bold">Name</TableHead>
+                <TableHead className="text-right font-bold">
+                  Scroll Count
+                </TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {users.map((user, index) => (
+                <TableRow
+                  key={user.name}
+                  className={`${getTierStyle(user.tier)} ${
+                    index === users.length - 1 ? "border-b" : ""
+                  }`}
+                >
+                  <TableCell className="font-medium">{user.name}</TableCell>
+                  <TableCell className="text-right">{user.scroll}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </CardContent>
+      </Card>
     </div>
   );
 }
