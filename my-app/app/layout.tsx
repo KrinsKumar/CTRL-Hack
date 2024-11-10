@@ -28,6 +28,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+          {/* This can be replaced with {children} if you want to display other content inside */}
         {children}
       </body>
     </html>
